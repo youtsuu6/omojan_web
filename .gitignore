@@ -1,0 +1,4 @@
+/.idea
+/config/__pycache__
+/game/__pycache__
+/game/migrations/__pycache__
