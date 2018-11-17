@@ -35,4 +35,4 @@ class WordViewSet(viewsets.ModelViewSet):
 class GameViewSet(viewsets.ModelViewSet):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
-    filter_class = WordFilter
+    filter_class = GameFilter
