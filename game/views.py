@@ -19,7 +19,7 @@ class WordFilter(filters.FilterSet):
 
 class GameFilter(filters.FilterSet):
     member_count = filters.NumberFilter(lookup_expr='exact')
-    mode = filters.ChoiceFilter(choices=Game.MODE_CHOICES)
+    mode = filters.CharFilter(lookup_expr='exact')
 
     class Word:
         model = Game
