@@ -24,3 +24,15 @@ class Game(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_deleted = models.BooleanField(default=False)
+
+
+class GameDetail(models.Model):
+    game = models.ForeignKey(Game, on_delete=models.PROTECT)
+    member_name = models.CharField(max_length=255)
+    turn_count = models.IntegerField()
+    selected_word_id_1 = models.IntegerField()
+    selected_word_id_2 = models.IntegerField()
+    point = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    is_deleted = models.BooleanField(default=False)
