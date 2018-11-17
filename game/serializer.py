@@ -19,7 +19,11 @@ class GameSerializer(serializers.ModelSerializer):
 
 class GameDetailSerializer(serializers.ModelSerializer):
     game = GameSerializer()
+    words = WordSerializer(many=True, read_only=True)
 
     class Meta:
         model = GameDetail
-        fields = '__all__'
+        fields = (
+        'id', 'game', 'member_name', 'turn_count', 'selected_word_id_1', 'selected_word_id_2', 'point', 'created_at',
+        'updated_at', 'words')
+
