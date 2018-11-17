@@ -21,7 +21,7 @@ class GameFilter(filters.FilterSet):
     member_count = filters.NumberFilter(lookup_expr='exact')
     mode = filters.CharFilter(lookup_expr='exact')
 
-    class Word:
+    class Game:
         model = Game
         fields = ['member_count', 'mode']
 
