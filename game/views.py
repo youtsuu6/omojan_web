@@ -3,13 +3,13 @@ from rest_framework import viewsets
 from django_filters import rest_framework as filters
 
 from .models import Word
+from .models import Game
 from .serializer import WordSerializer
+from .serializer import GameSerializer
 
 
-# フィルター用クラス
+# フィルター
 class WordFilter(filters.FilterSet):
-
-    # フィルタの定義
     name = filters.CharFilter(lookup_expr='contains')
 
     class Word:
@@ -17,7 +17,22 @@ class WordFilter(filters.FilterSet):
         fields = ['name']
 
 
+class GameFilter(filters.FilterSet):
+    member_count = filters.NumberFilter(lookup_expr='exact')
+    mode = filters.ChoiceFilter(choices=Game.MODE_CHOICES)
+
+    class Word:
+        model = Game
+        fields = ['member_count', 'mode']
+
+
 class WordViewSet(viewsets.ModelViewSet):
     queryset = Word.objects.all()
     serializer_class = WordSerializer
+    filter_class = WordFilter
+
+
+class GameViewSet(viewsets.ModelViewSet):
+    queryset = Game.objects.all()
+    serializer_class = GameSerializer
     filter_class = WordFilter
