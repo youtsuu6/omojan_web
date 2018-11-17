@@ -1,13 +1,6 @@
 from django.db import models
 
 
-class Word(models.Model):
-    name = models.CharField(max_length=255)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    is_deleted = models.BooleanField(default=False)
-
-
 class Game(models.Model):
     SINGLE_MODE = 'single'
     MULTI_MODE = 'multi'
@@ -33,6 +26,14 @@ class GameDetail(models.Model):
     selected_word_id_1 = models.IntegerField()
     selected_word_id_2 = models.IntegerField()
     point = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    is_deleted = models.BooleanField(default=False)
+
+
+class Word(models.Model):
+    name = models.CharField(max_length=255)
+    game_detail = models.ManyToManyField(GameDetail, related_name='words')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_deleted = models.BooleanField(default=False)
