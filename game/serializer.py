@@ -18,7 +18,7 @@ class GameSerializer(serializers.ModelSerializer):
 
 
 class GameDetailSerializer(serializers.ModelSerializer):
-    game = GameSerializer()
+    # game = GameSerializer()
     words = WordSerializer(many=True, read_only=True)
 
     class Meta:
