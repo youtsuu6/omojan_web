@@ -14,7 +14,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from django.contrib import admin
@@ -24,4 +23,5 @@ from game.urls import router as game_router
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(game_router.urls)),
+    path('api/', include('game.urls')),
 ]

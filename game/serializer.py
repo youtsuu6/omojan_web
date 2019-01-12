@@ -26,3 +26,8 @@ class GameDetailSerializer(serializers.ModelSerializer):
         'id', 'game', 'member_name', 'turn_count', 'selected_word_id_1', 'selected_word_id_2', 'point', 'created_at',
         'updated_at', 'words')
 
+
+class NewGameSerializer(serializers.Serializer):
+    mode = serializers.ChoiceField(Game.MODE_CHOICES)
+    member_count = serializers.IntegerField()
+    member_name = serializers.CharField()
