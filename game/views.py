@@ -103,8 +103,8 @@ class NewGameAPI(APIView):
             word_list = list(Word.objects.filter(is_deleted=False).values('id', 'name'))
             selected_word_list = random.sample(word_list, 6)
 
-            for i in range(6):
-                Word(id=selected_word_list[i]['id']).game_detail.add(game_detail.id)
+            for selected_word in selected_word_list:
+                Word(id=selected_word['id']).game_detail.add(game_detail.id)
 
         response_data = {
             'game': model_to_dict(game),
